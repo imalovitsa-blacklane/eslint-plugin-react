@@ -91,6 +91,7 @@ const allRules = {
   'state-in-constructor': require('./lib/rules/state-in-constructor'),
   'static-property-placement': require('./lib/rules/static-property-placement'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
+  'valid-table-hierarchy': require('./lib/rules/valid-table-hierarchy'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children')
 };
 /* eslint-enable */
