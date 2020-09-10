@@ -21,8 +21,8 @@ const parserOptions = {
 };
 
 function errorMessage(parentName, elementName) {
-  return `Invalid table elements hierarchy <${parentName}>\
- cannot be a parent of <${elementName}>.`;
+  return `Invalid DOM elements hierarchy: <${elementName}>\
+ cannot be a child of <${parentName}>.`;
 }
 
 // -----------------------------------------------------------------------------
@@ -32,6 +32,9 @@ function errorMessage(parentName, elementName) {
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('valid-table-hierarchy', rule, {
   valid: [
+    {
+      code: '<table>{foo.map((x) => <tr />)}</table>'
+    },
     {
       code: '<div />'
     },
@@ -78,9 +81,19 @@ ruleTester.run('valid-table-hierarchy', rule, {
           React.createElement("tr", {},
             React.createElement("td")));
       `
+    },
+    {
+      code: '<table>{true && <tr><td /></tr>}</table>'
+    },
+    {
+      code: '<table>{foo.map((x) => <tr><td /></tr>)}</table>'
     }
   ],
   invalid: [
+    {
+      code: '<script><button /></script>',
+      errors: [{message: errorMessage('script', 'button')}]
+    },
     {
       code: '<table><th></th></table>',
       errors: [{message: errorMessage('table', 'th')}]
@@ -118,6 +131,18 @@ ruleTester.run('valid-table-hierarchy', rule, {
           React.createElement("tr"))
       `,
       errors: [{message: errorMessage('tr', 'tr')}]
+    },
+    {
+      code: '<table>{true && <td />}</table>',
+      errors: [{message: errorMessage('table', 'td')}]
+    },
+    {
+      code: '<table>{foo.map((x) => <td />)}</table>',
+      errors: [{message: errorMessage('table', 'td')}]
+    },
+    {
+      code: '<table>{foo.map(function(x) { return <td />; })}</table>',
+      errors: [{message: errorMessage('table', 'td')}]
     }
   ]
 });
