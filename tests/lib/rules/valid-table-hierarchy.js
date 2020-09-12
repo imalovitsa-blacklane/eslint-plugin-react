@@ -22,7 +22,7 @@ const parserOptions = {
 
 function errorMessage(parentName, elementName) {
   return `Invalid DOM elements hierarchy: <${elementName}>\
- cannot be a child of <${parentName}>.`;
+ is not a valid child of <${parentName}>.`;
 }
 
 // -----------------------------------------------------------------------------
