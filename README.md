@@ -149,6 +149,7 @@ Enable the rules that you would like to use.
 * [react/state-in-constructor](docs/rules/state-in-constructor.md): State initialization in an ES6 class component should be in a constructor
 * [react/static-property-placement](docs/rules/static-property-placement.md): Defines where React component static properties should be positioned.
 * [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value is an object
+* [react/valid-dom-hierarchy](docs/rules/valid-dom-hierarchy.md): Prevent invalid table hierarchy.
 * [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md): Prevent passing of children to void DOM elements (e.g. `<br />`).
 <!-- AUTO-GENERATED-CONTENT:END -->
 
