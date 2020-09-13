@@ -10,7 +10,7 @@
 // -----------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
-const rule = require('../../../lib/rules/valid-table-hierarchy');
+const rule = require('../../../lib/rules/valid-dom-hierarchy');
 
 const parserOptions = {
   ecmaVersion: 2018,
